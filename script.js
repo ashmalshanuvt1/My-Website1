@@ -224,3 +224,25 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
         lucide.createIcons();
     }, 3000);
 });
+
+// --- Mobile Menu Toggle ---
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navItems = document.querySelectorAll('.nav-item');
+
+if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = navMenu.classList.contains('active') ? 'x' : 'menu';
+        mobileToggle.innerHTML = `<i data-lucide="${icon}"></i>`;
+        lucide.createIcons();
+    });
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileToggle.innerHTML = `<i data-lucide="menu"></i>`;
+            lucide.createIcons();
+        });
+    });
+}
